@@ -1,0 +1,10 @@
+{
+    "private": true,
+    "scripts": {
+        "assets": "NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    },
+    "devDependencies": {
+        "tachyons": "^4.10.0",
+        "laravel-mix": "^2.0"
+    }
+}
