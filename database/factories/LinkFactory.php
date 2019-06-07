@@ -1,6 +1,6 @@
 <?php
 
-use App\Link;
+use App\Links\Link;
 use Faker\Generator as Faker;
 
 $factory->define(Link::class, function (Faker $faker) {
