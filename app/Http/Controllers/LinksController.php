@@ -54,4 +54,20 @@ class LinksController extends Controller
             'link' => $link,
         ]);
     }
+
+    /**
+     * Redirects to the short URLs location.
+     *
+     * @param string $key
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function redirect(string $key): RedirectResponse
+    {
+        $link = $this->links->find($key);
+
+        abort_unless($link, 404);
+
+        return redirect()->away($link->location, 302);
+    }
 }
