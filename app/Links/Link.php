@@ -6,6 +6,7 @@ namespace App\Links;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Link extends Model
 {
@@ -39,5 +40,15 @@ class Link extends Model
     public function forKey(string $key): ?Link
     {
         return $this->key($key)->first();
+    }
+
+    /**
+     * Visits to this Link.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function visits(): HasMany
+    {
+        return $this->hasMany(Visit::class);
     }
 }

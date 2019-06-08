@@ -61,4 +61,27 @@ class Manager
     {
         return $this->links->forKey($key);
     }
+
+    /**
+     * Visit a Link: find it and log a visit.
+     *
+     * @param string $key
+     * @param string $ip
+     *
+     * @return \App\Links\Link|null
+     */
+    public function visit(string $key, string $ip): ?Link
+    {
+        $link = $this->find($key);
+
+        if (is_null($link)) {
+            return null;
+        }
+
+        $link->visits()->create([
+            'visitor_hash' => $ip,
+        ]);
+
+        return $link;
+    }
 }

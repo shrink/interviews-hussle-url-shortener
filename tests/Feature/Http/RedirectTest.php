@@ -34,4 +34,19 @@ class RedirectTest extends TestCase
     {
         $this->get('/invalid')->assertStatus(404);
     }
+
+    /**
+     * Tests that a visit is logged when a redirect occurs.
+     */
+    public function testVisitIsLoggedWhenRedirectingToLocation(): void
+    {
+        $link = factory(Link::class)->create([
+            'key' => 'shortkey',
+            'location' => 'https://www.example.com/',
+        ]);
+
+        $this->get('/shortkey');
+
+        $this->assertEquals(1, $link->visits()->count());
+    }
 }

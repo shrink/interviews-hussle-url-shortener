@@ -62,9 +62,9 @@ class LinksController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function redirect(string $key): RedirectResponse
+    public function redirect(Request $request, string $key): RedirectResponse
     {
-        $link = $this->links->find($key);
+        $link = $this->links->visit($key, $request->ip());
 
         abort_unless($link, 404);
 
