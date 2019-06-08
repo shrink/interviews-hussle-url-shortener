@@ -14,7 +14,7 @@ class CreateLinkRequest extends FormRequest
     public function rules()
     {
         return [
-            'location' => 'url',
+            'location' => 'url|required',
         ];
     }
 }
