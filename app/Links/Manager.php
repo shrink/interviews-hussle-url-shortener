@@ -49,4 +49,16 @@ class Manager
             'key' => $this->generator->generate(6),
         ]))->save();
     }
+
+    /**
+     * Find a Link.
+     *
+     * @param string $key
+     *
+     * @return \App\Links\Link|null
+     */
+    public function find(string $key): ?Link
+    {
+        return $this->links->forKey($key);
+    }
 }

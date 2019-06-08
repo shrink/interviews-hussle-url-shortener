@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return 'Hello, World!';
-});
+Route::post('/', 'LinksController@create')->name('links.create');
+Route::get('/~{key}', 'LinksController@meta')->name('links.meta');
