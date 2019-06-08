@@ -63,7 +63,8 @@ class Manager
     }
 
     /**
-     * Visit a Link: find it and log a visit.
+     * Visit a Link: find it and log a visit with a link-specific hash
+     * identifying the user by their IP address without storing IP addresses.
      *
      * @param string $key
      * @param string $ip
@@ -72,14 +73,12 @@ class Manager
      */
     public function visit(string $key, string $ip): ?Link
     {
-        $link = $this->find($key);
-
-        if (is_null($link)) {
+        if (! $link = $this->find($key)) {
             return null;
         }
 
         $link->visits()->create([
-            'visitor_hash' => $ip,
+            'visitor_hash' => sha1("{$key}-{$ip}"),
         ]);
 
         return $link;
