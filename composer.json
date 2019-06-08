@@ -57,6 +57,16 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "launch": [
+            "composer install",
+            "touch database/production.sqlite database/testing.sqlite",
+            "composer run post-root-package-install",
+            "composer run post-create-project-cmd",
+            "@php artisan migrate",
+            "npm install",
+            "npm run assets",
+            "@php artisan serve"
         ]
     }
 }
