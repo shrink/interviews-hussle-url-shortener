@@ -44,9 +44,9 @@ class Manager
      */
     public function create(string $location): Link
     {
-        return $this->links->save([
+        return tap($this->links->newInstance([
             'location' => $location,
             'key' => $this->generator->generate(6),
-        ]);
+        ]))->save();
     }
 }

@@ -22,7 +22,7 @@ class ManagerTest extends TestCase
 
         $links = $this->createMock(Link::class);
         $links->expects($this->once())
-            ->method('save')
+            ->method('newInstance')
             ->with([
                 'location' => 'https://www.example.com/',
                 'key' => 'a',
