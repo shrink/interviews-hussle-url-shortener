@@ -11,6 +11,7 @@
 |
 */
 
+Route::get('/', 'LinksController@index')->name('links.index');
 Route::post('/', 'LinksController@create')->name('links.create');
 Route::get('/~{key}', 'LinksController@meta')->name('links.meta');
 Route::get('/{key}', 'LinksController@redirect')->name('links.redirect');
